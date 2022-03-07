@@ -14,6 +14,7 @@ class ContentMain extends Component {
                     <div className="text purple-color">{mbtiName[i]}</div>
                 </div>
             )
+            i+=1
         }
         return(
             <div className="contents">
