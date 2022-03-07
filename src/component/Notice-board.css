@@ -1,0 +1,30 @@
+@import "MbtiMain.css";
+
+.notice-board {
+    clear: both;
+    width: 885px;
+    padding-top: 30px;
+}
+.notice-board .notice-title {
+    text-align: left;
+}
+.notice-board ul {
+    padding-left: 10px;
+}
+.notice-board ul li {
+    list-style: none;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.notice-board ul li>span:nth-child(1) {
+    display: inline-block;
+    width: 30px;
+    margin-right: 50px;
+}
+.notice-board ul li>span:nth-child(2) {
+    display: inline-block;
+    width: 630px;
+    margin-right: 50px;
+}
+

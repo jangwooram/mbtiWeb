@@ -1,0 +1,47 @@
+
+.Header {
+    padding-top: 30px;
+    position: relative;
+}
+.Header>div {
+    float: left;
+}
+.Header>div.login {
+    float: right;
+    line-height: 80px;
+}
+.Header>div.login button {
+    border: 1px solid #999;
+    background: #fff;
+    padding: 10px;
+    cursor: pointer;
+}
+.Logo {
+    width: 364px;
+    height: 80px;
+}
+.Logo a {
+    display: block;
+    width: 364px;
+    height: 80px;
+}
+.Logo a img {
+    width: 100%;
+}
+.searchBar {
+    height: 80px;
+    line-height: 80px;
+    margin-left: 50px;
+    position: relative;
+}
+.searchBar input {
+    height: 25px;
+    border-radius: 30px;
+    padding: 5px 5px 5px 35px;
+}
+.searchBar .searchIcon {
+    position: absolute;
+    left: 13px;
+    top: 33px;
+}
+

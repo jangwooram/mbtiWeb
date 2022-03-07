@@ -1,0 +1,25 @@
+.wrap {
+    width: 1200px;
+    margin: auto;
+}
+
+/*main color*/
+
+.purple-color {
+    color: #825e94;
+}
+.blue-color {
+    color: #3e91ab;
+}
+.green-color {
+    color: #339d71;
+}
+.yellow-color {
+    color: #dcaa3d;
+}
+.bold {
+    font-weight: bold;
+}
+.text-right {
+    text-align: right;
+}

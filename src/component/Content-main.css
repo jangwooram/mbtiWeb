@@ -1,0 +1,24 @@
+@import "MbtiMain.css";
+
+.contents {
+    clear: both;
+    padding-top: 50px;
+}
+.contents .mbti-board .board {
+    float: left;
+    margin-right: 57px;
+    margin-bottom: 30px;
+}
+.contents .mbti-board .board:last-child, .contents .mbti-board .board:nth-child(8) {
+    margin-right: 0;
+}
+.contents .mbti-board .board .icon {
+    width: 100px;
+    height: 100px;
+    background: #61dafb;
+}
+
+.contents .mbti-board .board .text {
+    font-weight: bold;
+    font-size: 1.2em;
+}
