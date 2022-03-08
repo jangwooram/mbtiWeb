@@ -15,10 +15,17 @@
 .contents .mbti-board .board .icon {
     width: 100px;
     height: 100px;
-    background: #61dafb;
+}
+.contents .mbti-board .board .icon img {
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    margin: auto;
+    box-sizing: border-box;
 }
 
 .contents .mbti-board .board .text {
     font-weight: bold;
     font-size: 1.2em;
+    text-align: center;
 }
