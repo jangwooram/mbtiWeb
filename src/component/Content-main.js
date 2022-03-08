@@ -1,8 +1,7 @@
-import {Component} from "react";
+import React,{ useState } from "react";
 import './Content-main.css'
 
-class ContentMain extends Component {
-    render() {
+function ContentMain() {
         let mbtiName = ["INTJ", "INTP", "ENTJ", "ENTP", "INFJ", "INFP", "ENFJ",
             "ENFP", "ISTJ", "ISFJ", "ESTJ", "ESFJ", "ISTP", "ISFP", "ESTP", "ESFP"];
         let nameList = [];
@@ -39,6 +38,8 @@ class ContentMain extends Component {
             }
             i += 1;
         }
+
+
         return (
             <div className="contents">
                 <div className="mbti-board">
@@ -46,7 +47,6 @@ class ContentMain extends Component {
                 </div>
             </div>
         );
-    }
 }
 
 export default ContentMain;

@@ -3,6 +3,7 @@ import './MbtiMain.css';
 import HeaderMain from "./Header-main";
 import ContentMain from "./Content-main";
 import NoticeBoard from "./Notice-board";
+import ParticeComponent from "./Partice-component";
 
 class MbtiMain extends Component {
     render() {
@@ -11,6 +12,7 @@ class MbtiMain extends Component {
                 <HeaderMain/>
                 <ContentMain/>
                 <NoticeBoard/>
+                <ParticeComponent/>
             </div>
         );
     }
