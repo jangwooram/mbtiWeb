@@ -3,8 +3,7 @@ import './Header-main.css';
 import { FaSearch } from 'react-icons/fa';
 
 
-class HeaderMain extends Component {
-    render() {
+function HeaderMain() {
         return(
             <div className="Header">
                 <div className="Logo">
@@ -21,7 +20,6 @@ class HeaderMain extends Component {
                 </div>
             </div>
         );
-    }
 }
 
 export default HeaderMain;
