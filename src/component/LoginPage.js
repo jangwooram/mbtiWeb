@@ -1,4 +1,5 @@
 import React,{useState} from "react";
+import './LoginPage.css';
 
 function LoginPage() {
 
@@ -15,10 +16,7 @@ function LoginPage() {
     const [Username, setUsername] = useState('');
     const [Password, setPassword] = useState('');
     return(
-        <div>
-            <h1>login page</h1>
-        </div>
-        /*<div>
+        <div className='loginPage'>
             <h1>login Page</h1>
             <form onSubmit={onSubmit} action="">
                 <input
@@ -33,7 +31,7 @@ function LoginPage() {
                 /><br/>
                 <button type={"submit"}>Login</button>
             </form>
-        </div>*/
+        </div>
     );
 }
 

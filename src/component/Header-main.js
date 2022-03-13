@@ -16,16 +16,18 @@ function HeaderMain() {
     return (
         <div className="Header">
             <div className="Logo">
-                <a href="#">
+                <Link to='/'>
                     <img src={require('./images/mbtiLogo.png')} alt=""/>
-                </a>
+                </Link>
             </div>
             <div className="searchBar">
                 <input onKeyUp={onKeyUp} type="text" size={50} placeholder={"관심있는 내용을 검색해보세요!"}/>
                 <FaSearch onClick={onSunmit} className="searchIcon"/>
             </div>
             <div className="login">
-                <Link to="/LoginPage">로그인</Link>
+                <Link to="/LoginPage">
+                    <button>로그인</button>
+                </Link>
             </div>
         </div>
     );

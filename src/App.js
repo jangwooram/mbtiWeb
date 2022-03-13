@@ -1,10 +1,23 @@
 import './App.css';
-import Home from './pages/Home'
+import HeaderMain from "./component/Header-main";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import ContentMain from "./component/Content-main";
+import LoginPage from "./component/LoginPage";
+import React from "react";
 
 function App() {
   return (
     <div className="App">
-        <Home />
+        <BrowserRouter>
+            <div>
+                <HeaderMain/>
+                <Routes>
+                    <Route exact path='/' element={<ContentMain/>}/>
+                    <Route exact path='/LoginPage' element={<LoginPage/>} />
+                    <Route exact path='/test'/>
+                </Routes>
+            </div>
+        </BrowserRouter>
     </div>
   );
 }

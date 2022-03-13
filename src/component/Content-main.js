@@ -1,5 +1,6 @@
 import React,{ useState } from "react";
 import './Content-main.css'
+import NoticeBoard from "./Notice-board";
 
 function ContentMain() {
         let mbtiName = ["INTJ", "INTP", "ENTJ", "ENTP", "INFJ", "INFP", "ENFJ",
@@ -45,6 +46,7 @@ function ContentMain() {
                 <div className="mbti-board">
                     {nameList}
                 </div>
+                <NoticeBoard/>
             </div>
         );
 }
