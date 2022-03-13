@@ -16,6 +16,10 @@ function LoginPage() {
     const [Password, setPassword] = useState('');
     return(
         <div>
+            <h1>login page</h1>
+        </div>
+        /*<div>
+            <h1>login Page</h1>
             <form onSubmit={onSubmit} action="">
                 <input
                     placeholder={"username"}
@@ -29,7 +33,7 @@ function LoginPage() {
                 /><br/>
                 <button type={"submit"}>Login</button>
             </form>
-        </div>
+        </div>*/
     );
 }
 

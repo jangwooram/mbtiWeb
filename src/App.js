@@ -1,10 +1,10 @@
 import './App.css';
-import MbtiMain from "./component/MbtiMain";
+import Home from './pages/Home'
 
 function App() {
   return (
     <div className="App">
-        <MbtiMain/>
+        <Home />
     </div>
   );
 }
