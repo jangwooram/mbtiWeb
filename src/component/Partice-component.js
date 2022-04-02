@@ -85,7 +85,7 @@ function ParticeComponent() {
             {/*<h1>test text</h1>
             {renderBtn}
             <button onClick={toggle}>toggle</button>*/}
-            <form onSubmit={addMovie}>
+            {/*<form onSubmit={addMovie}>
                 <input type="text"
                        value={movieTitle}
                        placeholder={"영화제목"}
@@ -95,7 +95,7 @@ function ParticeComponent() {
                        onChange={event => setMovieSince(event.target.value)}/>
                 <button>영화추가</button>
             </form>
-            {movieMap}
+            {movieMap}*/}
         </div>
     );
 

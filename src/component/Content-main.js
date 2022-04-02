@@ -1,6 +1,7 @@
 import React,{ useState } from "react";
 import './Content-main.css'
 import NoticeBoard from "./Notice-board";
+import ParticeComponent from "./Partice-component";
 
 function ContentMain() {
         let mbtiName = ["INTJ", "INTP", "ENTJ", "ENTP", "INFJ", "INFP", "ENFJ",
@@ -47,6 +48,7 @@ function ContentMain() {
                     {nameList}
                 </div>
                 <NoticeBoard/>
+                {/*<ParticeComponent />*/}
             </div>
         );
 }

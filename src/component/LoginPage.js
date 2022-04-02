@@ -3,6 +3,8 @@ import './LoginPage.css';
 
 function LoginPage() {
 
+    let loginPage = true;
+
     const submitDate = (event) => {
         if(event.keyCode === 13) {
             onSubmit();

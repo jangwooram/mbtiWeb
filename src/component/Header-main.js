@@ -5,6 +5,8 @@ import LoginPage from "./LoginPage";
 
 
 function HeaderMain() {
+
+
     const onSunmit = () => {
         alert("엔터누름")
     }
@@ -13,6 +15,7 @@ function HeaderMain() {
             onSunmit();
         }
     }
+
     return (
         <div className="Header">
             <div className="Logo">
@@ -26,7 +29,7 @@ function HeaderMain() {
             </div>
             <div className="login">
                 <Link to="/LoginPage">
-                    <button>로그인</button>
+                    <button id="loginBtn">로그인</button>
                 </Link>
             </div>
         </div>

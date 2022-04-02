@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import ContentMain from "./component/Content-main";
 import LoginPage from "./component/LoginPage";
 import React from "react";
+import SignUp from "./component/SignUp";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
                 <Routes>
                     <Route exact path='/' element={<ContentMain/>}/>
                     <Route exact path='/LoginPage' element={<LoginPage/>} />
+                    <Route exact path='/SingUp' element={<SignUp/>}></Route>
                     <Route exact path='/test'/>
                 </Routes>
             </div>
