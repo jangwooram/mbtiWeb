@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import './Header-main.css';
 import {FaSearch} from 'react-icons/fa';
+import {useEffect, useState} from "react";
 
 
 function HeaderMain() {
 
+    const [] = useState();
     const onSunmit = function () {
         alert("엔터누름")
     }

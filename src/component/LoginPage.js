@@ -1,16 +1,11 @@
-import React,{useState} from "react";
+import React, {useEffect, useState} from "react";
 import './LoginPage.css';
 
 function LoginPage(props) {
-    props.state = {
-
-    }
-    const submitDate = function(event){
-        if(event.keyCode === 13) {
-            onSubmit();
-        }
-    }
-
+    useEffect(function (){
+        props.loginInfo = true;
+        console.log("로그인인포",props.loginInfo);
+    })
     const onSubmit = function(){
         console.log('로그인 정보 ',Username, Password);
         alert("enter")
