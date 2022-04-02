@@ -14,8 +14,8 @@ function App() {
                 <HeaderMain/>
                 <Routes>
                     <Route exact path='/' element={<ContentMain/>}/>
-                    <Route exact path='/LoginPage' element={<LoginPage/>} />
-                    <Route exact path='/SingUp' element={<SignUp/>}></Route>
+                    <Route exact path='/LoginPage/:postid' element={<LoginPage/>} />
+                    <Route exact path='/SingUp' element={<SignUp/>}/>
                     <Route exact path='/test'/>
                 </Routes>
             </div>

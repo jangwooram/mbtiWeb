@@ -1,16 +1,14 @@
 import { Link } from "react-router-dom";
 import './Header-main.css';
 import {FaSearch} from 'react-icons/fa';
-import LoginPage from "./LoginPage";
 
 
 function HeaderMain() {
 
-
-    const onSunmit = () => {
+    const onSunmit = function () {
         alert("엔터누름")
     }
-    const onKeyUp = (event) => {
+    const onKeyUp = function (event){
         if (event.keyCode === 13) {
             onSunmit();
         }
@@ -28,7 +26,7 @@ function HeaderMain() {
                 <FaSearch onClick={onSunmit} className="searchIcon"/>
             </div>
             <div className="login">
-                <Link to="/LoginPage">
+                <Link id="LoginPage" to="/LoginPage">
                     <button id="loginBtn">로그인</button>
                 </Link>
             </div>

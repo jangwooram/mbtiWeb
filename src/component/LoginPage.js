@@ -1,17 +1,17 @@
 import React,{useState} from "react";
 import './LoginPage.css';
 
-function LoginPage() {
+function LoginPage(props) {
+    props.state = {
 
-    let loginPage = true;
-
-    const submitDate = (event) => {
+    }
+    const submitDate = function(event){
         if(event.keyCode === 13) {
             onSubmit();
         }
     }
 
-    const onSubmit = () => {
+    const onSubmit = function(){
         console.log('로그인 정보 ',Username, Password);
         alert("enter")
     }

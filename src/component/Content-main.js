@@ -48,7 +48,6 @@ function ContentMain() {
                     {nameList}
                 </div>
                 <NoticeBoard/>
-                {/*<ParticeComponent />*/}
             </div>
         );
 }
