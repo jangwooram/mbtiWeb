@@ -1,5 +1,7 @@
 import axios from "axios";
 
+//TODO - Token 만료시 리프레쉬와 로그인시 토큰 정보 로컬스토리지에 저장
+
 const instance = axios.create({
     baseUrl: process.env.REACT_APP_BASE_URL,
     timeout: 1000

@@ -18,9 +18,9 @@ function App() {
                 <HeaderMain loginInfo={loginInfo} setLoginInfo={setLoginInfo}/>
                 <Routes>
                     <Route exact path='/' element={<ContentMain/>}/>
-                    <Route exact path='/LoginPage' element={<LoginPage setLoginInfo={setLoginInfo}/>} />
-                    <Route exact path='/SingUp' element={<SignUp/>}/>
-                    <Route exact path='/ArticleList' element={<ArticleList/>}/>
+                    <Route exact path='/LoginPage' element={<LoginPage/>} />
+                    <Route exact path='/SingUp' element={<SignUp/>}></Route>
+                    <Route exact path='/ArticleList/:category' element={<ArticleList/>}/>
                     <Route exact path='/ArticleCreate' element={<ArticleCreate/>}/>
                 </Routes>
             </div>
