@@ -2,10 +2,11 @@ import React, {useEffect, useState} from "react";
 import './LoginPage.css';
 
 function LoginPage(props) {
+
     useEffect(function (){
-        props.loginInfo = true;
-        console.log("로그인인포",props.loginInfo);
+        let data = props.setLoginInfo(true);
     })
+
     const onSubmit = function(){
         console.log('로그인 정보 ',Username, Password);
         alert("enter")

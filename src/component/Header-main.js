@@ -1,31 +1,41 @@
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import './Header-main.css';
 import {FaSearch} from 'react-icons/fa';
-import {useEffect, useState} from "react";
 
 
-function HeaderMain() {
+function HeaderMain(props) {
 
-    const [] = useState();
-    const onSunmit = function () {
+    console.log(props.loginInfo);
+    let loginBtn = document.getElementById('LoginPage');
+
+    if (props.loginInfo) {
+        loginBtn.style.display = "none";
+    }
+
+    const loginBtnChange = function (){
+        props.setLoginInfo(false);
+        loginBtn.style.display = "block";
+    }
+
+    const onSubmit = function () {
         alert("엔터누름")
     }
-    const onKeyUp = function (event){
+    const onKeyUp = function (event) {
         if (event.keyCode === 13) {
-            onSunmit();
+            onSubmit();
         }
     }
 
     return (
         <div className="Header">
-            <div className="Logo">
+            <div id="Logo" onClick={loginBtnChange}>
                 <Link to='/'>
                     <img src={require('./images/mbtiLogo.png')} alt=""/>
                 </Link>
             </div>
             <div className="searchBar">
                 <input onKeyUp={onKeyUp} type="text" size={50} placeholder={"관심있는 내용을 검색해보세요!"}/>
-                <FaSearch onClick={onSunmit} className="searchIcon"/>
+                <FaSearch onClick={onSubmit} className="searchIcon"/>
             </div>
             <div className="login">
                 <Link id="LoginPage" to="/LoginPage">
