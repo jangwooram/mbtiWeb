@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import ContentMain from "./component/Content-main";
 import LoginPage from "./component/LoginPage";
 import React, {useEffect, useState} from "react";
+import ArticleListPage from "./component/ArticleListPage";
 import SignUp from "./component/SignUp";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
                     <Route exact path='/LoginPage' element={<LoginPage setLoginInfo={setLoginInfo}/>} />
                     <Route exact path='/SingUp' element={<SignUp/>}/>
                     <Route exact path='/test'/>
+                    <Route exact path='/ArticleListPage' element={<ArticleListPage/>}/>
                 </Routes>
             </div>
         </BrowserRouter>
