@@ -4,7 +4,7 @@ import './LoginPage.css';
 function LoginPage(props) {
 
     useEffect(function (){
-        let data = props.setLoginInfo(true);
+        props.setLoginPageInfo(true);
     })
 
     const onSubmit = function(){

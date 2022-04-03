@@ -9,17 +9,16 @@ import ArticleCreate from "./component/ArticleCreate";
 import SignUp from "./component/SignUp";
 
 function App() {
-    const [loginInfo,setLoginInfo] = useState(false);
-    console.log("asdasd",loginInfo);
+    const [loginPageInfo,setLoginPageInfo] = useState(true);
   return (
     <div className="App">
         <BrowserRouter>
             <div>
-                <HeaderMain loginInfo={loginInfo} setLoginInfo={setLoginInfo}/>
+                <HeaderMain loginPageInfo={loginPageInfo} setLoginInfo={setLoginPageInfo}/>
                 <Routes>
-                    <Route exact path='/' element={<ContentMain/>}/>
-                    <Route exact path='/LoginPage' element={<LoginPage/>} />
-                    <Route exact path='/SingUp' element={<SignUp/>}></Route>
+                    <Route exact path='/' element={<ContentMain setLoginInfo={setLoginPageInfo}/>}/>
+                    <Route exact path='/LoginPage' element={<LoginPage loginInfo={loginPageInfo} setLoginPageInfo={setLoginPageInfo}/>} />
+                    <Route exact path='/SingUp' element={<SignUp/>}/>
                     <Route exact path='/ArticleList/:category' element={<ArticleList/>}/>
                     <Route exact path='/ArticleCreate' element={<ArticleCreate/>}/>
                 </Routes>

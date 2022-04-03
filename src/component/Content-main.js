@@ -1,8 +1,13 @@
-import React,{ useState } from "react";
+import React, {useEffect, useState} from "react";
 import './Content-main.css'
 import NoticeBoard from "./Notice-board";
 
-function ContentMain() {
+function ContentMain(props) {
+
+        useEffect(function (){
+            props.setLoginInfo(false);
+        })
+
         let mbtiName = ["INTJ", "INTP", "ENTJ", "ENTP", "INFJ", "INFP", "ENFJ",
             "ENFP", "ISTJ", "ISFJ", "ESTJ", "ESFJ", "ISTP", "ISFP", "ESTP", "ESFP"];
         let nameList = [];

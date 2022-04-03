@@ -1,21 +1,12 @@
 import {Link} from "react-router-dom";
 import './Header-main.css';
 import {FaSearch} from 'react-icons/fa';
+import {useEffect} from "react";
 
 
 function HeaderMain(props) {
-
-    console.log(props.loginInfo);
-    let loginBtn = document.getElementById('LoginPage');
-
-    if (props.loginInfo) {
-        loginBtn.style.display = "none";
-    }
-
-    const loginBtnChange = function (){
-        props.setLoginInfo(false);
-        loginBtn.style.display = "block";
-    }
+    let info = props.loginPageInfo;
+    console.log('info----',info)
 
     const onSubmit = function () {
         alert("엔터누름")
@@ -28,7 +19,7 @@ function HeaderMain(props) {
 
     return (
         <div className="Header">
-            <div id="Logo" onClick={loginBtnChange}>
+             <div id="Logo">
                 <Link to='/'>
                     <img src={require('./images/mbtiLogo.png')} alt=""/>
                 </Link>
@@ -37,11 +28,11 @@ function HeaderMain(props) {
                 <input onKeyUp={onKeyUp} type="text" size={50} placeholder={"관심있는 내용을 검색해보세요!"}/>
                 <FaSearch onClick={onSubmit} className="searchIcon"/>
             </div>
-            <div className="login">
+            {info || <div className="login">
                 <Link id="LoginPage" to="/LoginPage">
                     <button id="loginBtn">로그인</button>
                 </Link>
-            </div>
+            </div>}
         </div>
     );
 }
