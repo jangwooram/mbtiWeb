@@ -9,7 +9,7 @@ import ArticleCreate from "./component/ArticleCreate";
 import SignUp from "./component/SignUp";
 
 function App() {
-    const [loginPageInfo,setLoginPageInfo] = useState(true);
+    const [loginPageInfo,setLoginPageInfo] = useState(false);
   return (
     <div className="App">
         <BrowserRouter>
