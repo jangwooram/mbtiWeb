@@ -10,5 +10,5 @@ services:
       - "./:/app"
       - "/app/node_modules"
     ports:
-      - "8888:3000"
+      - "3000:3000"
     command: npm start
