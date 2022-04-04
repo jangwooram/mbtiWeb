@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from "react";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import axios from "axios";
 import instance from "../ApiController";
 import './ArticleList.css';
@@ -26,7 +26,7 @@ function ArticleList() {
 
     return(
         <div className='ArticleList'>
-            <h1>ArticleList</h1>
+            <h1>어허! 바른말!</h1>
             {articles.map(article =>(
                 <div key={article.id}>
                     <ul>
@@ -39,7 +39,11 @@ function ArticleList() {
                     <h1>{article.hits}</h1>*/}
                 </div>
             ))}
-            
+            <div className={"articleCreate"}>
+                <Link style={{textDecoration: 'none'}} to={'/ArticleCreate'}>
+                    글쓰기
+                </Link>
+            </div>
         </div>
     );
 }
