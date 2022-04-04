@@ -12,12 +12,7 @@
     float: right;
     line-height: 80px;
 }
-.Header>div.login button {
-    border: 1px solid #999;
-    background: #fff;
-    padding: 10px;
-    cursor: pointer;
-}
+
 #Logo {
     width: 364px;
     height: 80px;

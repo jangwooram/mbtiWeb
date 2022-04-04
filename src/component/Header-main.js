@@ -2,6 +2,8 @@ import {Link} from "react-router-dom";
 import './Header-main.css';
 import {FaSearch} from 'react-icons/fa';
 import {useEffect} from "react";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import {IconButton} from "@mui/material";
 
 
 function HeaderMain(props) {
@@ -30,7 +32,10 @@ function HeaderMain(props) {
             </div>
             {info || <div className="login">
                 <Link id="LoginPage" to="/LoginPage">
-                    <button id="loginBtn">로그인</button>
+                    <IconButton aria-label="accountCircle">
+                        <AccountCircleIcon fontSize='large'/>
+                    </IconButton>
+                    {/*<button id="loginBtn">로그인</button>*/}
                 </Link>
             </div>}
         </div>

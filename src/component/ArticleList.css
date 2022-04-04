@@ -1,4 +1,5 @@
 @import "MbtiMain.css";
+/*
 
 .ArticleList ul {
     width: 100%;
@@ -29,11 +30,8 @@
 .ArticleList ul li:nth-child(4) {
     width: 15%;
 }
+*/
 
-.articleCreate {
-    display: inline-block;
-    padding: 10px;
+.editBtn {
     float: right;
-    margin-top: 30px;
-    border: 1px solid #999;
-}
+    }
