@@ -7,6 +7,7 @@ import React, {useEffect, useState} from "react";
 import ArticleList from "./component/ArticleList";
 import ArticleCreate from "./component/ArticleCreate";
 import SignUp from "./component/SignUp";
+import ArticleDetail from "./component/ArticleDetail";
 
 function App() {
     const [loginPageInfo,setLoginPageInfo] = useState(false);
@@ -21,6 +22,7 @@ function App() {
                     <Route exact path='/SingUp' element={<SignUp/>}/>
                     <Route exact path='/ArticleList/:category' element={<ArticleList/>}/>
                     <Route exact path='/ArticleCreate' element={<ArticleCreate/>}/>
+                    <Route exact path='/ArticleDetail/:article_id' element={<ArticleDetail/>}/>
                 </Routes>
             </div>
         </BrowserRouter>
