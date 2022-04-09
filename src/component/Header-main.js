@@ -8,7 +8,7 @@ import {IconButton} from "@mui/material";
 
 function HeaderMain(props) {
     let info = props.loginPageInfo;
-    console.log('info----',info)
+    //console.log('info----',info)
 
     const onSubmit = function () {
         alert("엔터누름")

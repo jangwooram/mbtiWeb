@@ -1,41 +1,69 @@
-import React, {useState, useEffect} from "react";
-import {Link, useParams} from "react-router-dom";
-import axios from "axios";
-import instance from "../ApiController";
-import './ArticleList.css';
-import {IconButton} from "@mui/material";
-import EditIcon from '@mui/icons-material/Edit';
-import Paper from '@mui/material/Paper';
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import { useTheme } from '@mui/material/styles';
+import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
+import TableFooter from '@mui/material/TableFooter';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import IconButton from '@mui/material/IconButton';
+import FirstPageIcon from '@mui/icons-material/FirstPage';
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import LastPageIcon from '@mui/icons-material/LastPage';
+import {useEffect, useState} from "react";
+import instance from "../ApiController";
+import {useParams} from "react-router-dom";
+import {TableHead} from "@mui/material";
+import {Link} from "@mui/icons-material";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 
-function ArticleList(props) {
+function ArticleList() {
     const {category} = useParams();
     const baseurl = process.env.REACT_APP_BASE_URL;
     const [articles, setArticles] = useState([]);
+    const [totalCount, setTotalCount] = useState([])
 
     useEffect(() => {
         async function getArticles() {
             try {
-                const r = await instance.get(baseurl + '/api/v1/articles/list/' + category + '/');
-                console.log(r.data);
+                const r = await instance.get(baseurl + '/api/v1/articles/list/' + category + '/?offset='+page+'&limit=3');
+                //console.log(r.data);
+                setTotalCount(r.data.total_count);
                 setArticles(r.data.data);
             } catch (e) {
                 console.log(e);
             }
 
         }
-
         // console.log('....',articles);
         getArticles();
     }, []);
+    let page= 1;
+    let showList = 3;
+    let totalPage= 1;
+    let EndNum = page * 20;
+    let StartNum = EndNum-19;
+    let offset = StartNum;
+    let pageCount = () => {
+        if(totalCount<3) {
+            totalPage = 1;
+            return;
+        }
+        if(totalCount%showList === 0){
+            totalPage = parseInt(totalCount/showList);
+        }
+        totalPage = parseInt(totalCount/showList+1);
+    }
+    pageCount();
 
+    console.log(totalPage);
     const columns = [
         {id: '타입', label: '타입', minWidth: "10%"},
         {id: '제목', label: '제목', minWidth: "60%"},
@@ -43,50 +71,57 @@ function ArticleList(props) {
         {id: '작성시간', label: '작성시간', minWidth: "20%"}
     ];
 
-        return (
-            <div className='ArticleList'>
-                <h1>어허! 바른말!</h1>
-                <Paper sx={{width: '100%'}}>
-                    <TableContainer sx={{maxHeight: 800}}>
-                        <Table stickyHeader aria-label="sticky table">
-                            <TableHead>
-                                <TableRow sx={{width: '100%'}}>
-                                    {columns.map((column) => (
-                                        <TableCell key={column.id} align={column.align}>
-                                            {column.label}
-                                        </TableCell>
-                                    ))}
-                                </TableRow>
-                            </TableHead>
-                            {articles.map(article => (
-                                <TableRow style={{textDecoration:"none"}} component={Link} to={'/ArticleDetail/'+article.id} key={article.id}>
-                                        <TableCell style={{width:"10%"}}>
-                                            {article.category}
-                                        </TableCell>
-                                        <TableCell style={{width:"60%"}}>
-                                            {article.title}
-                                        </TableCell>
-                                        <TableCell style={{width:"10%"}}>
-                                            {article.author}
-                                        </TableCell>
-                                        <TableCell style={{width:"20%"}}>
-                                            {article.created_at}
-                                        </TableCell>
-                                </TableRow>
-                            ))}
-                        </Table>
-                    </TableContainer>
-                    </Paper>
-                <div className="editBtn">
-                    <Link to={'/ArticleCreate'}>
-                        <IconButton aria-label="edit">
-                            <EditIcon fontSize="large"/>
-                        </IconButton>
-                    </Link>
-                </div>
-            </div>
-        );
+    function linkClick(id) {
+        window.location.href = '/ArticleDetail/'+id;
     }
 
+    return (
+        <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 500}} aria-label="custom pagination table">
+                <TableHead>
+                    <TableRow>
+                        {columns.map((column) => (
+                            <TableCell key={column.id} align={column.align}>
+                                {column.label}
+                            </TableCell>
+                        ))}
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {articles
+                    .map((article) => (
+                        <TableRow onClick={(e)=>{linkClick(article.id)}} key={article.id} hover={true} style={{cursor: 'pointer'}}>
+                            <TableCell style={{width: '10%'}} component="th" scope="row">
+                                {article.category}
+                            </TableCell>
+                            <TableCell style={{width:'60%'}} component="th" scope="row">
+                                {article.title}
+                            </TableCell>
+                            <TableCell style={{ width: '10%', textAlign: "left" }} align="right">
+                                {article.author}
+                            </TableCell>
+                            <TableCell style={{ width: '15%', textAlign: "left" }} align="right">
+                                {article.created_at}
+                            </TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+                <TableFooter>
+                    <TableRow>
+                        <TableCell colSpan={4} style={{textAlign: "center", margin: 'auto' }}>
+                            <IconButton>
+                                <ArrowBackIosIcon/>
+                            </IconButton>
+
+                            <IconButton>
+                                <ArrowForwardIosIcon/>
+                            </IconButton>
+                        </TableCell>
+                    </TableRow>
+                </TableFooter>
+            </Table>
+        </TableContainer>
+    );
+}
 
 export default ArticleList;
