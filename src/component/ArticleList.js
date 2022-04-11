@@ -1,27 +1,16 @@
 import * as React from 'react';
-import PropTypes, {func} from 'prop-types';
-import {useTheme} from '@mui/material/styles';
-import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableFooter from '@mui/material/TableFooter';
-import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import IconButton from '@mui/material/IconButton';
-import FirstPageIcon from '@mui/icons-material/FirstPage';
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import LastPageIcon from '@mui/icons-material/LastPage';
 import {useEffect, useState} from "react";
 import instance from "../ApiController";
 import {useParams} from "react-router-dom";
-import {Pagination, TableHead} from "@mui/material";
-import {Link} from "@mui/icons-material";
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import {Button, Pagination, TableHead} from "@mui/material";
+import EditIcon from '@mui/icons-material/Edit';
 
 
 function ArticleList() {
@@ -34,7 +23,7 @@ function ArticleList() {
     useEffect((pageNum) => {
         async function getArticles() {
             try {
-                const r = await instance.get(baseurl + '/api/v1/articles/list/' + category + '/?offset=' + pageNum + '&limit=20');
+                const r = await instance.get(baseurl + '/api/v1/articles/list/' + category + '/?offset=' + pageNum + '&limit='+showList);
                 //console.log(r.data);
                 setTotalCount(r.data.total_count);
                 setArticles(r.data.data);
@@ -47,7 +36,7 @@ function ArticleList() {
         getArticles();
     }, []);
 
-    let showList = 20;
+    let showList = 15;
     let totalPage = 1;
     let pageCount = function () {
         if (totalCount < 3) {
@@ -75,7 +64,7 @@ function ArticleList() {
         setPageNum(value);
         async function getArticles() {
             try {
-                const r = await instance.get(baseurl + '/api/v1/articles/list/' + category + '/?offset=' + value + '&limit=20');
+                const r = await instance.get(baseurl + '/api/v1/articles/list/' + category + '/?offset=' + value + '&limit='+showList);
                 setArticles(r.data.data);
             } catch (e) {
                 console.log(e);
@@ -84,6 +73,9 @@ function ArticleList() {
         }
         getArticles();
     };
+    function articleCreate() {
+        window.location.href = '/ArticleCreate/';
+    }
     return (
         <TableContainer component={Paper}>
             <Table sx={{minWidth: 500}} aria-label="custom pagination table">
@@ -120,7 +112,10 @@ function ArticleList() {
                 <TableFooter>
                     <TableRow>
                         <TableCell colSpan={4} style={{textAlign: "center", margin: 'auto'}}>
-                            <Pagination
+                            <Button sx={{float:'right', marginLeft:'30px'}} variant="contained"
+                                    onClick={articleCreate}
+                            >글쓰기</Button>
+                            <Pagination sx={{float:'right'}}
                                 count={totalPage} page={pageNum} onChange={handleChange} shape="rounded"/>
                         </TableCell>
                     </TableRow>
