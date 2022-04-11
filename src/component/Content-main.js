@@ -17,7 +17,7 @@ function ContentMain(props) {
             nameList.push(
                 <div key={i} className="board">
                     <Link style={{ textDecoration: 'none',color:'#444' }} to={"/ArticleList/" + mbtiName[i]}>
-                        <div className="icon"><img src={process.env.PUBLIC_URL + '/img/icon' + (i + 1) + '.png'}
+                        <div className="icon"><img src={process.env.PUBLIC_URL + '/img/icon' + mbtiName[i] + '.png'}
                                                    alt=""/></div>
                         <div className="text">{mbtiName[i]}</div>
                     </Link>
