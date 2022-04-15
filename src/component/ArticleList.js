@@ -17,8 +17,10 @@ function ArticleList(props) {
     const baseurl = process.env.REACT_APP_BASE_URL;
     const [articles, setArticles] = useState([]);
     const [totalCount, setTotalCount] = useState([]);
-    const [pageNum, setPageNum] = useState(1);
-
+    const [pageNum, setPageNum] = useState(() => JSON.parse(window.localStorage.getItem("pageNum")) || 1);
+    useEffect(() => {
+        window.localStorage.setItem("pageNum", JSON.stringify(pageNum));
+    }, [pageNum]);
     useEffect(() => {
         async function getArticles() {
             try {
@@ -29,7 +31,6 @@ function ArticleList(props) {
                 console.log(e);
             }
         }
-
         getArticles();
     }, []);
 
@@ -59,19 +60,10 @@ function ArticleList(props) {
     }
 
     const handleChange = (event, value) => {
+        document.location.href = '/ArticleList/'+category+'/'+'?offset='+value;
         setPageNum(value);
-
-        async function getArticles() {
-            try {
-                const r = await instance.get(baseurl + '/api/v1/articles/list/' + category + '/?offset=' + value + '&limit=' + showList);
-                setArticles(r.data.data);
-            } catch (e) {
-                console.log(e);
-            }
-        }
-        getArticles();
     };
-
+console.log(pageNum);
     function articleCreate() {
         window.location.href = '/ArticleCreate/';
     }
