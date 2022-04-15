@@ -18,9 +18,7 @@ function ArticleList(props) {
     const [articles, setArticles] = useState([]);
     const [totalCount, setTotalCount] = useState([]);
     const [pageNum, setPageNum] = useState(() => JSON.parse(window.localStorage.getItem("pageNum")) || 1);
-    useEffect(() => {
-        window.localStorage.setItem("pageNum", JSON.stringify(pageNum));
-    }, [pageNum]);
+
     useEffect(() => {
         async function getArticles() {
             try {
@@ -33,7 +31,9 @@ function ArticleList(props) {
         }
         getArticles();
     }, []);
-
+    useEffect(() => {
+        window.localStorage.setItem("pageNum", JSON.stringify(pageNum));
+    }, [pageNum]);
     let showList = 3; // 보여지는 리스트 개수
     let totalPage = 1;
     let pageCount = function () {

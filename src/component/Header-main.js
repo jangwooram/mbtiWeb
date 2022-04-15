@@ -18,12 +18,14 @@ function HeaderMain(props) {
             onSubmit();
         }
     }
-
+    const storageClear = function () {
+        localStorage.clear();
+    }
     return (
         <div className="Header">
              <div id="Logo">
                 <Link to='/'>
-                    <img style={{width:'364px'}} src={require('./images/SRGB.png')} alt=""/>
+                    <img style={{width:'364px'}} onClick={storageClear} src={require('./images/SRGB.png')} alt=""/>
                 </Link>
             </div>
             <div className="searchBar">

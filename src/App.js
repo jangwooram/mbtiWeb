@@ -11,7 +11,7 @@ import ArticleDetail from "./component/ArticleDetail";
 
 function App() {
     const [loginPageInfo,setLoginPageInfo] = useState(false);
-  return (
+    return (
     <div className="App">
         <BrowserRouter>
             <div>
