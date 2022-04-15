@@ -12,26 +12,28 @@ import {useParams} from "react-router-dom";
 import {Button, Pagination, TableHead} from "@mui/material";
 
 
-function ArticleList() {
+function ArticleList(props) {
     const {category} = useParams();
     const baseurl = process.env.REACT_APP_BASE_URL;
     const [articles, setArticles] = useState([]);
     const [totalCount, setTotalCount] = useState([]);
-    const [pageNum,setPageNum] = useState(1);
-    useEffect((pageNum) => {
+    const [pageNum, setPageNum] = useState(1);
+
+    useEffect(() => {
         async function getArticles() {
             try {
-                const r = await instance.get(baseurl + '/api/v1/articles/list/' + category + '/?offset=' + pageNum + '&limit='+showList);
+                const r = await instance.get(baseurl + '/api/v1/articles/list/' + category + '/?offset=' + pageNum + '&limit=' + showList);
                 setTotalCount(r.data.total_count);
                 setArticles(r.data.data);
             } catch (e) {
                 console.log(e);
             }
         }
+
         getArticles();
     }, []);
 
-    let showList = 15; // 보여지는 리스트 개수
+    let showList = 3; // 보여지는 리스트 개수
     let totalPage = 1;
     let pageCount = function () {
         if (totalCount < 3) {
@@ -55,11 +57,13 @@ function ArticleList() {
     function linkClick(id) {
         window.location.href = '/ArticleDetail/' + id;
     }
+
     const handleChange = (event, value) => {
         setPageNum(value);
+
         async function getArticles() {
             try {
-                const r = await instance.get(baseurl + '/api/v1/articles/list/' + category + '/?offset=' + value + '&limit='+showList);
+                const r = await instance.get(baseurl + '/api/v1/articles/list/' + category + '/?offset=' + value + '&limit=' + showList);
                 setArticles(r.data.data);
             } catch (e) {
                 console.log(e);
@@ -67,12 +71,14 @@ function ArticleList() {
         }
         getArticles();
     };
+
     function articleCreate() {
         window.location.href = '/ArticleCreate/';
     }
-    const titleList = ['INTJ 용의주도한 전략가','INTP 논리적인 사색가','ENTJ 대담한 통솔자','ENTP 뜨거운 논쟁을 즐기는 변론가',
-        'INFJ 선의의 옹호자','INFP 열정적인 중재자','ENFJ 정의로운 사회운동가','ENFP 재기발랄한 활동가', 'ISTJ 청렴결백한 논리주의자',
-        'ISFJ 용감한 수호자','ESTJ 엄격한 관리자','ESFJ 사교적인 외교관','ISTP 만능 재주꾼','ISFP 호기심 많은 예술가','ESTP 모험을 즐기는 사업가',
+
+    const titleList = ['INTJ 용의주도한 전략가', 'INTP 논리적인 사색가', 'ENTJ 대담한 통솔자', 'ENTP 뜨거운 논쟁을 즐기는 변론가',
+        'INFJ 선의의 옹호자', 'INFP 열정적인 중재자', 'ENFJ 정의로운 사회운동가', 'ENFP 재기발랄한 활동가', 'ISTJ 청렴결백한 논리주의자',
+        'ISFJ 용감한 수호자', 'ESTJ 엄격한 관리자', 'ESFJ 사교적인 외교관', 'ISTP 만능 재주꾼', 'ISFP 호기심 많은 예술가', 'ESTP 모험을 즐기는 사업가',
         'ESFP 자유로운 영혼의 연예인'];
     const subTitleList = [
         '상상력이 풍부하며 철두철미한 계획을 세우는 전략가형.',
@@ -93,83 +99,115 @@ function ArticleList() {
         '주위에 있으면 인생이 지루할 새가 없을 정도로 즉흥적이며 열정과 에너지가 넘치는 연예인형.\n'];
     let title = '';
     let subTitle = '';
-    let categoryName = JSON.stringify(category).substr(1,4);
+    let categoryName = JSON.stringify(category).substr(1, 4);
     let symbolTag = '';
 
     function titleInfo(e) {
-        for(let i =0; i<e.length; i++) {
-            if(e[i].substr(0,4) === categoryName){
+        for (let i = 0; i < e.length; i++) {
+            if (e[i].substr(0, 4) === categoryName) {
                 title = e[i];
                 subTitle = subTitleList[i];
             }
         }
         switch (categoryName) {
-            case 'INTJ': case 'INTP': case 'ENTJ': case 'ENTP': symbolTag = 'Purple'; break;
-            case 'INFJ': case 'INFP': case 'ENFJ': case 'ENFP': symbolTag = 'Green'; break;
-            case 'ISTJ': case 'ISFJ': case 'ESTJ': case 'ESFJ': symbolTag = 'Blue'; break;
-            case 'ISTP': case 'ISFP': case 'ESTP': case 'ESFP': symbolTag = 'Yellow'; break;
+            case 'INTJ':
+            case 'INTP':
+            case 'ENTJ':
+            case 'ENTP':
+                symbolTag = '825e94';
+                break;
+            case 'INFJ':
+            case 'INFP':
+            case 'ENFJ':
+            case 'ENFP':
+                symbolTag = '339d71';
+                break;
+            case 'ISTJ':
+            case 'ISFJ':
+            case 'ESTJ':
+            case 'ESFJ':
+                symbolTag = '3e91ab';
+                break;
+            case 'ISTP':
+            case 'ISFP':
+            case 'ESTP':
+            case 'ESFP':
+                symbolTag = 'dcaa3d';
+                break;
         }
     }
+
     titleInfo(titleList);
-    console.log(symbolTag);
+
     return (
         <div>
-            <div style={{textAlign:'left',boxShadow:'inset 0 1px 3px rgba(0, 0, 0, .1)', margin:'20px auto'}}>
-                <div style={{width:'650px',margin:'auto', display:'flex',justifyContent: 'center'}}>
-                    <img style={{height:'61px', margin:'15px 15px 0 0'}} src={process.env.PUBLIC_URL + '/img/icon' + categoryName + '.png'}
+            <div style={{
+                textAlign: 'left',
+                borderTop: '1px solid #ccc',
+                borderBottom: '1px solid #ccc',
+                margin: '20px auto',
+                color: '#' + symbolTag
+            }}>
+                <div style={{width: '850px', margin: 'auto', display: 'flex', justifyContent: 'center'}}>
+                    <img style={{height: '56px', marginTop: '46px', }}
+                         src={process.env.PUBLIC_URL + '/img/icon' + categoryName + '.png'}
                          alt=""/>
                     <div>
-                    <p style={{wordBreak:'keep-all'}}><span style={{display:'block',fontWeight:'bold',fontSize:'2rem'}}>{title}</span>
-                        {subTitle}</p>
+                        <p style={{wordBreak: 'keep-all', marginTop: '44px', width: '607px', fontSize:'16px'}}><span
+                            style={{display: 'block', fontWeight: 'bold', fontSize: '36px'}}>{title}</span>
+                            {subTitle}</p>
                     </div>
-                    <img style={{height:'61px',margin:'15px 0 0 15px'}} src={process.env.PUBLIC_URL + '/img/symbol'+ symbolTag + '.png'} alt=""/>
+                    <img style={{height: '154px'}} src={process.env.PUBLIC_URL + '/img/symbol' + symbolTag + '.png'}
+                         alt=""/>
                 </div>
             </div>
-        <TableContainer component={Paper}>
-            <Table sx={{minWidth: 500}} aria-label="custom pagination table">
-                <TableHead>
-                    <TableRow sx={{background:'#e7e7e7'}}>
-                        {columns.map((column) => (
-                            <TableCell key={column.id} align={column.align}>
-                                {column.label}
+
+
+            <TableContainer component={Paper}>
+                <Table sx={{minWidth: 500}} aria-label="custom pagination table">
+                    <TableHead>
+                        <TableRow sx={{background: '#e7e7e7'}}>
+                            {columns.map((column) => (
+                                <TableCell key={column.id} align={column.align}>
+                                    {column.label}
+                                </TableCell>
+                            ))}
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {articles
+                            .map((article) => (
+                                <TableRow onClick={(e) => {
+                                    linkClick(article.id)
+                                }} key={article.id} hover={true} style={{cursor: 'pointer'}}>
+                                    <TableCell style={{width: '10%'}} component="th" scope="row">
+                                        {article.category}
+                                    </TableCell>
+                                    <TableCell style={{width: '60%'}} component="th" scope="row">
+                                        {article.title}
+                                    </TableCell>
+                                    <TableCell style={{width: '10%', textAlign: "left"}} align="right">
+                                        {article.author}
+                                    </TableCell>
+                                    <TableCell style={{width: '15%', textAlign: "left"}} align="right">
+                                        {article.created_at}
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                    </TableBody>
+                    <TableFooter>
+                        <TableRow>
+                            <TableCell colSpan={4} style={{textAlign: "center", margin: 'auto'}}>
+                                <Button sx={{float: 'right', marginLeft: '30px'}} variant="contained"
+                                        onClick={articleCreate}
+                                >글쓰기</Button>
+                                <Pagination sx={{float: 'right'}}
+                                            count={totalPage} page={pageNum} onChange={handleChange} shape="rounded"/>
                             </TableCell>
-                        ))}
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {articles
-                        .map((article) => (
-                            <TableRow onClick={(e) => {
-                                linkClick(article.id)
-                            }} key={article.id} hover={true} style={{cursor: 'pointer'}}>
-                                <TableCell style={{width: '10%'}} component="th" scope="row">
-                                    {article.category}
-                                </TableCell>
-                                <TableCell style={{width: '60%'}} component="th" scope="row">
-                                    {article.title}
-                                </TableCell>
-                                <TableCell style={{width: '10%', textAlign: "left"}} align="right">
-                                    {article.author}
-                                </TableCell>
-                                <TableCell style={{width: '15%', textAlign: "left"}} align="right">
-                                    {article.created_at}
-                                </TableCell>
-                            </TableRow>
-                        ))}
-                </TableBody>
-                <TableFooter>
-                    <TableRow>
-                        <TableCell colSpan={4} style={{textAlign: "center", margin: 'auto'}}>
-                            <Button sx={{float:'right', marginLeft:'30px'}} variant="contained"
-                                    onClick={articleCreate}
-                            >글쓰기</Button>
-                            <Pagination sx={{float:'right'}}
-                                count={totalPage} page={pageNum} onChange={handleChange} shape="rounded"/>
-                        </TableCell>
-                    </TableRow>
-                </TableFooter>
-            </Table>
-        </TableContainer>
+                        </TableRow>
+                    </TableFooter>
+                </Table>
+            </TableContainer>
         </div>
     );
 }

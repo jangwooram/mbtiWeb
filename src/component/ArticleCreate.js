@@ -62,7 +62,7 @@ async function onCreateArticle() {
             title: article_title,
             contents: article_content
         });
-        if(r.data.status == 200){
+        if(r.data.status === 200){
             alert('성공!');
             //TODO: 라우트 랜딩페이지
         }else{
