@@ -31,7 +31,8 @@ const ArticleDetail = (props) => {
 
     async function postComment() {
         if(!value){
-            alert('제목과 내용은 필수 입력값입니다.');
+            alert('내용을 입력하세요.');
+            return;
         }
         const baseurl = process.env.REACT_APP_BASE_URL;
             try {
@@ -42,6 +43,7 @@ const ArticleDetail = (props) => {
                 if(r.data.status === 200){
                     alert('성공!');
                     //TODO: 라우트 랜딩페이지
+                    setValue('');
                 }else{
                     alert('네트워크 에러');
                 }
