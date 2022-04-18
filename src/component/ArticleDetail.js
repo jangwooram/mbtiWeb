@@ -1,15 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import instance from "../ApiController";
-import {Box, Button, Grid, TextField} from "@mui/material";
+import {Box, Button, Grid, TableHead, TextField} from "@mui/material";
 import Paper from "@mui/material/Paper";
+import TableCell from "@mui/material/TableCell";
+import TableRow from "@mui/material/TableRow";
+import TableContainer from "@mui/material/TableContainer";
+import Table from "@mui/material/Table";
+import ArticleList from "./ArticleList";
 
 
 const ArticleDetail = (props) => {
     const {article_id} = useParams();
     const baseurl = process.env.REACT_APP_BASE_URL;
     const [details, setDetails] = useState([]);
-    const [comments, setComments] = useState([]);
+    const [value, setValue] = React.useState('');
 
     useEffect(function () {
         async function getArticleDetail() {
@@ -20,11 +25,26 @@ const ArticleDetail = (props) => {
                 console.log(e);
             }
         }
-
         getArticleDetail();
     }, [])
-    const [value, setValue] = React.useState('');
+    const [comments,setComments] = useState([]);
+    useEffect(function (){
+        async function fetch() {
+            const r = await instance.get(baseurl + '/api/v1/articles/detail/' + article_id + '/');
+            setComments(r.data.data.comment);
+            console.log(r.data.data.comment);
+        }
+        fetch();
+    },[])
 
+    const userComments = comments.map((comment)=>
+        (<TableRow key={comment.id}>
+            <TableCell sx={{textAlign:'center'}}>{comment.id}</TableCell>
+            <TableCell>{comment.author}</TableCell>
+            <TableCell>{comment.contents}</TableCell>
+            <TableCell>{comment.created_at}</TableCell>
+        </TableRow>))
+    console.log(comments);
     const handleChange = (event) => {
         setValue(event.target.value);
     };
@@ -98,6 +118,19 @@ const ArticleDetail = (props) => {
                         </Button>
                     </div>
                 </Box>
+                <TableContainer>
+                    <Table sx={{minWidth: 500}} aria-label="custom pagination table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell sx={{width:'5%'}}>번호</TableCell>
+                                <TableCell sx={{width:'10%'}}>작성자</TableCell>
+                                <TableCell sx={{width:'70%'}}>제목</TableCell>
+                                <TableCell>시간</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        {userComments}
+                    </Table>
+                </TableContainer>
             </Box>
         </div>
     );

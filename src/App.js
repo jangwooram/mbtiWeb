@@ -8,6 +8,7 @@ import ArticleList from "./component/ArticleList";
 import ArticleCreate from "./component/ArticleCreate";
 import SignUp from "./component/SignUp";
 import ArticleDetail from "./component/ArticleDetail";
+import Footer from "./component/Footer";
 
 function App() {
     const [loginPageInfo,setLoginPageInfo] = useState(false);
@@ -24,6 +25,7 @@ function App() {
                     <Route exact path='/ArticleCreate' element={<ArticleCreate/>}/>
                     <Route exact path='/ArticleDetail/:article_id' element={<ArticleDetail/>}/>
                 </Routes>
+                <Footer/>
             </div>
         </BrowserRouter>
     </div>

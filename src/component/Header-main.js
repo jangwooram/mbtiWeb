@@ -1,10 +1,8 @@
 import {Link} from "react-router-dom";
 import './Header-main.css';
-import {FaSearch} from 'react-icons/fa';
-import {useEffect} from "react";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import {IconButton} from "@mui/material";
-
+import {Box, IconButton, TextField} from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
 
 function HeaderMain(props) {
     let info = props.loginPageInfo;
@@ -18,19 +16,19 @@ function HeaderMain(props) {
             onSubmit();
         }
     }
-    const storageClear = function () {
-        localStorage.clear();
-    }
+
     return (
         <div className="Header">
              <div id="Logo">
                 <Link to='/'>
-                    <img style={{width:'364px'}} onClick={storageClear} src={require('./images/SRGB.png')} alt=""/>
+                    <img style={{width:'364px'}} src={require('./images/SRGB.png')} alt=""/>
                 </Link>
             </div>
             <div className="searchBar">
-                <input onKeyUp={onKeyUp} type="text" size={50} placeholder={"관심있는 내용을 검색해보세요!"}/>
-                <FaSearch onClick={onSubmit} className="searchIcon"/>
+                <Box sx={{ display: 'flex', alignItems: 'flex-end','& .MuiTextField-root': {m: 1, width: '100%'}}}>
+                    <SearchIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                    <TextField id="input-with-sx" label="원하는 키워드를 검색하세요" variant="standard" onKeyUp={onKeyUp}/>
+                </Box>
             </div>
             {info || <div className="login">
                 <Link id="LoginPage" to="/LoginPage">

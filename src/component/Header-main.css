@@ -27,18 +27,14 @@
 }
 .searchBar {
     height: 80px;
+    width: 360px;
     line-height: 80px;
     margin-left: 50px;
     position: relative;
 }
-.searchBar input {
+/*.searchBar input {
     height: 25px;
     border-radius: 30px;
     padding: 5px 5px 5px 35px;
-}
-.searchBar .searchIcon {
-    position: absolute;
-    left: 13px;
-    top: 33px;
-}
+}*/
 

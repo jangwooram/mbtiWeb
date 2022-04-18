@@ -25,6 +25,7 @@ function ArticleList(props) {
                 const r = await instance.get(baseurl + '/api/v1/articles/list/' + category + '/?offset=' + pageNum + '&limit=' + showList);
                 setTotalCount(r.data.total_count);
                 setArticles(r.data.data);
+                console.log(r.data.data);
             } catch (e) {
                 console.log(e);
             }
@@ -49,8 +50,9 @@ function ArticleList(props) {
     pageCount();
 
     const columns = [
+        {id: '번호', label: '번호', minWidth: "5%"},
         {id: '타입', label: '타입', minWidth: "10%"},
-        {id: '제목', label: '제목', minWidth: "60%"},
+        {id: '제목', label: '제목', minWidth: "55%"},
         {id: '작성자', label: '작성자', minWidth: "10%"},
         {id: '작성시간', label: '작성시간', minWidth: "20%"}
     ];
@@ -130,7 +132,7 @@ console.log(pageNum);
     }
 
     titleInfo(titleList);
-
+console.log(articles);
     return (
         <div>
             <div style={{
@@ -172,10 +174,13 @@ console.log(pageNum);
                                 <TableRow onClick={(e) => {
                                     linkClick(article.id)
                                 }} key={article.id} hover={true} style={{cursor: 'pointer'}}>
+                                    <TableCell style={{width:'5%'}}>
+                                        {article.id}
+                                    </TableCell>
                                     <TableCell style={{width: '10%'}} component="th" scope="row">
                                         {article.category}
                                     </TableCell>
-                                    <TableCell style={{width: '60%'}} component="th" scope="row">
+                                    <TableCell style={{width: '55%'}} component="th" scope="row">
                                         {article.title}
                                     </TableCell>
                                     <TableCell style={{width: '10%', textAlign: "left"}} align="right">
@@ -189,7 +194,7 @@ console.log(pageNum);
                     </TableBody>
                     <TableFooter>
                         <TableRow>
-                            <TableCell colSpan={4} style={{textAlign: "center", margin: 'auto'}}>
+                            <TableCell colSpan={5} style={{textAlign: "center", margin: 'auto'}}>
                                 <Button sx={{float: 'right', marginLeft: '30px'}} variant="contained"
                                         onClick={articleCreate}
                                 >글쓰기</Button>

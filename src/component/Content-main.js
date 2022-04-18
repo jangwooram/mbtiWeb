@@ -1,10 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import './Content-main.css'
 import NoticeBoard from "./Notice-board";
 import {Link} from "react-router-dom";
 
 function ContentMain(props) {
-
+    const storageClear = function () {
+        localStorage.clear();
+    }
     useEffect(function () {
         props.setLoginInfo(false);
     })
@@ -16,7 +18,7 @@ function ContentMain(props) {
     while (i < mbtiName.length) {
             nameList.push(
                 <div key={i} className="board">
-                    <Link style={{ textDecoration: 'none',color:'#444' }} to={"/ArticleList/" + mbtiName[i]}>
+                    <Link onClick={storageClear} style={{ textDecoration: 'none',color:'#444' }} to={"/ArticleList/" + mbtiName[i]}>
                         <div className="icon"><img src={process.env.PUBLIC_URL + '/img/icon' + mbtiName[i] + '.png'}
                                                    alt=""/></div>
                         <div className="text">{mbtiName[i]}</div>
