@@ -7,14 +7,14 @@ import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import TableContainer from "@mui/material/TableContainer";
 import Table from "@mui/material/Table";
-import ArticleList from "./ArticleList";
+
 
 
 const ArticleDetail = (props) => {
     const {article_id} = useParams();
     const baseurl = process.env.REACT_APP_BASE_URL;
     const [details, setDetails] = useState([]);
-    const [value, setValue] = React.useState('');
+    let [value, setValue] = React.useState('');
 
     useEffect(function () {
         async function getArticleDetail() {
@@ -39,12 +39,15 @@ const ArticleDetail = (props) => {
 
     const userComments = comments.map((comment)=>
         (<TableRow key={comment.id}>
-            <TableCell sx={{textAlign:'center'}}>{comment.id}</TableCell>
             <TableCell>{comment.author}</TableCell>
-            <TableCell>{comment.contents}</TableCell>
+            <TableCell>{comment.contents.split('\n').map((line) => {
+                return (
+                    <span>{line}<br /></span>
+                )
+            })}</TableCell>
             <TableCell>{comment.created_at}</TableCell>
         </TableRow>))
-    console.log(comments);
+
     const handleChange = (event) => {
         setValue(event.target.value);
     };
@@ -71,9 +74,10 @@ const ArticleDetail = (props) => {
             } catch (e) {
                 console.log(e);
             }
-
-
+        const r = await instance.get(baseurl + '/api/v1/articles/detail/' + article_id + '/');
+        setComments(r.data.data.comment);
     }
+
     return (
         <div className="articleDetail">
             <Box
@@ -118,11 +122,10 @@ const ArticleDetail = (props) => {
                         </Button>
                     </div>
                 </Box>
-                <TableContainer>
+                <TableContainer component={Paper}>
                     <Table sx={{minWidth: 500}} aria-label="custom pagination table">
                         <TableHead>
                             <TableRow>
-                                <TableCell sx={{width:'5%'}}>번호</TableCell>
                                 <TableCell sx={{width:'10%'}}>작성자</TableCell>
                                 <TableCell sx={{width:'70%'}}>제목</TableCell>
                                 <TableCell>시간</TableCell>

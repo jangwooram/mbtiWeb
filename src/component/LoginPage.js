@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from "react";
 import './LoginPage.css';
 import SignIn from "./SignIn";
+import SignUp from "./SignUp";
+import Link from "@mui/material/Link";
+
 
 function LoginPage(props) {
 
@@ -11,6 +14,9 @@ function LoginPage(props) {
     return(
         <div className='loginPage'>
             <SignIn/>
+            <Link to={"/SignUp"}>
+                회원가입
+            </Link>
         </div>
     );
 }

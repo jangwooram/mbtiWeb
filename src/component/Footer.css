@@ -1,0 +1,7 @@
+ul.footUl {
+    display: flex;
+    justify-content: center;
+}
+ul.footUl li {
+    margin: 0 10px;
+}

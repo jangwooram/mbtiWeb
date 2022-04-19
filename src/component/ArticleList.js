@@ -35,7 +35,7 @@ function ArticleList(props) {
     useEffect(() => {
         window.localStorage.setItem("pageNum", JSON.stringify(pageNum));
     }, [pageNum]);
-    let showList = 3; // 보여지는 리스트 개수
+    let showList = 15; // 보여지는 리스트 개수
     let totalPage = 1;
     let pageCount = function () {
         if (totalCount < 3) {
