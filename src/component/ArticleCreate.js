@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react";
 import axios from "axios";
 import instance from "../ApiController";
+import {Button, TextField} from "@mui/material";
 
 
 function ArticleCreate({category}) {
@@ -31,16 +32,16 @@ function ArticleCreate({category}) {
                         ))}
                     </select> 
                 </div> 
-                <div> 
-                    <span>제목: </span>
-                    <input id="article_title"></input> 
-                </div> 
-                <div> 
-                    <span>내용: </span>
-                    <textarea id="article_content"></textarea>
+                <div>
+                    <TextField fullWidth={true} id="article_title" label="제목" variant="outlined" />
                 </div> 
                 <div>
-                    <button onClick={onCreateArticle}>작성</button>
+                    <TextField sx={{marginTop:'20px'}} maxRows={500} minRows={15} fullWidth={true} multiline id="article_content" label="여기 내용을 입력해주세요" variant="outlined" />
+                </div> 
+                <div>
+                    <Button sx={{float: 'right', marginLeft: '30px', margin:'10px 0'}} variant="contained"
+                            onClick={onCreateArticle}
+                    >글쓰기</Button>
                 </div>
             </div>
         </div>

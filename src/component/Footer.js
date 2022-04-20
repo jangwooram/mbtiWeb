@@ -8,7 +8,8 @@ const Footer = () => {
             borderTop:'1px solid #e7e7e7',
             marginTop:'50px',
             textAlign:'center',
-            paddingTop:'30px'
+            paddingTop:'30px',
+            clear:'both',
         }}>
             <p>사용자들이 서로 치고박고 싸우면 좋겠습니다 선생님</p>
             <ul className={'footUl'}>

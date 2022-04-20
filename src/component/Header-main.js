@@ -31,11 +31,10 @@ function HeaderMain(props) {
                 </Box>
             </div>
             {info || <div className="login">
-                <Link id="LoginPage" to="/LoginPage">
+                <Link id="SignIn" to="/SignIn">
                     <IconButton aria-label="accountCircle">
                         <AccountCircleIcon fontSize='large'/>
                     </IconButton>
-                    {/*<button id="loginBtn">로그인</button>*/}
                 </Link>
             </div>}
         </div>
