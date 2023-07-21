@@ -10,7 +10,7 @@ function HomeContent(props) {
      */
 
     return (
-        <div className="contents">
+        <div className="wrapper">
             <ArguementHot/>
             <BoardHot/>
             <BoardTagHot/>
