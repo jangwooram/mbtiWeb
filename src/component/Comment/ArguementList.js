@@ -10,16 +10,14 @@ const rows = [
 ];
 function CommentList() {
     /**
-     * 인기 게시물 
+     * 논쟁 댓글 
      */
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableBody>
                     {rows.map((row) => (
-                        <TableRow
-                        key={row.id}
-                        >
+                        <TableRow key={row.id}>
                         <TableCell component="th" scope="row">
                             {row.content}
                         </TableCell>
