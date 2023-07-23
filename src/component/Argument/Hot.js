@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import { BarChart, XAxis, YAxis, Bar, Legend, Cell, ResponsiveContainer } from "recharts";
 import Typography from "@mui/material/Typography";
 
-import CommentList from "../Comment/List";
+import CommentList from "../Comment/ArguementList";
 import Hline from "../Element/Hline";
 import { width } from "@mui/system";
 
