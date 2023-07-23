@@ -18,18 +18,16 @@ function App() {
     return (
     <div className="App">
         <BrowserRouter>
-            <div>
-                <HomeHeader loginPageInfo={loginPageInfo} setLoginInfo={setLoginPageInfo}/>
-                <Routes>
-                    <Route exact path='/' element={<HomeContent setLoginInfo={setLoginPageInfo}/>}/>
-                    <Route exact path='/SignIn' element={<SignIn loginInfo={loginPageInfo} setLoginPageInfo={setLoginPageInfo}/>} />
-                    <Route exact path='/SignUp' element={<SignUp/>}/>
-                    <Route exact path='/ArticleList/:category' element={<ArticleList/>}/>
-                    <Route exact path='/ArticleCreate' element={<ArticleCreate/>}/>
-                    <Route exact path='/ArticleDetail/:article_id' element={<ArticleDetail/>}/>
-                </Routes>
-                <Footer/>
-            </div>
+            <HomeHeader loginPageInfo={loginPageInfo} setLoginInfo={setLoginPageInfo}/>
+            <Routes>
+                <Route exact path='/' element={<HomeContent setLoginInfo={setLoginPageInfo}/>}/>
+                <Route exact path='/SignIn' element={<SignIn loginInfo={loginPageInfo} setLoginPageInfo={setLoginPageInfo}/>} />
+                <Route exact path='/SignUp' element={<SignUp/>}/>
+                <Route exact path='/ArticleList/:category' element={<ArticleList/>}/>
+                <Route exact path='/ArticleCreate' element={<ArticleCreate/>}/>
+                <Route exact path='/ArticleDetail/:article_id' element={<ArticleDetail/>}/>
+            </Routes>
+            <Footer/>
         </BrowserRouter>
     </div>
   );
