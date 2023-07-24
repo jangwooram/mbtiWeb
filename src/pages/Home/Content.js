@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
-import ArguementHot from "../Argument/Hot";
-import BoardHot from "../Board/Hot";
-import BoardTagHot from "../Board/TagHot";
+import ArguementHot from "../../component/Argument/Hot";
+import BoardHot from "../../component/Board/Hot";
+import BoardTagHot from "../../component/Board/TagHot";
 import {Link} from "react-router-dom";
 
 function HomeContent(props) {

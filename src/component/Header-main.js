@@ -21,7 +21,7 @@ function HeaderMain(props) {
         <div className="Header">
              <div id="Logo">
                 <Link to='/'>
-                    <img style={{width:'364px'}} src={require('./images/SRGB.png')} alt=""/>
+                    <img style={{width:'364px'}} src={require('../assets/img/SRGB.png')} alt=""/>
                 </Link>
             </div>
             <div className="searchBar">

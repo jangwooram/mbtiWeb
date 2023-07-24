@@ -1,16 +1,16 @@
 import './App.css';
 import './component/base.css'
-import HomeHeader from "./component/Home/Header";
-import HomeContent from "./component/Home/Content";
+import HomeHeader from "./pages/Home/Header";
+import HomeContent from "./pages/Home/Content";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import ArticleList from "./component/ArticleList";
 import ArticleCreate from "./component/ArticleCreate";
 
 import ArticleDetail from "./component/ArticleDetail";
-import Footer from "./component/Footer";
-import SignIn from "./component/SignIn";
-import SignUp from "./component/SignUp";
+import Footer from "./pages/Home/Footer";
+import SignIn from "./pages/Sign/SignIn";
+import SignUp from "./pages/Sign/SignUp";
 
 function App() {
     const [loginPageInfo,setLoginPageInfo] = useState(false);

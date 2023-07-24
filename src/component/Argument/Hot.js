@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import { BarChart, XAxis, YAxis, Bar, Legend, Cell, ResponsiveContainer } from "recharts";
 import Typography from "@mui/material/Typography";
 
-import CommentList from "../Comment/ArguementList";
+import CommentList from "../../pages/Comment/ArguementList";
 import Hline from "../Element/Hline";
 import { width } from "@mui/system";
 
@@ -22,7 +22,7 @@ function ArguementHot(props) {
                                 value: `${item.name}`,
                                 color: item.fill
                             }))
-      
+
     return (
         <div className="container">
             <div className="container-header horizontal">
@@ -33,7 +33,7 @@ function ArguementHot(props) {
             <div className="container-body">
                 <Typography variant="h6">깻잎논쟁</Typography>
                 <div className="horizontal">
-                        <ResponsiveContainer width="50%" height={data.length*33 + 100}>    
+                        <ResponsiveContainer width="50%" height={data.length*33 + 100}>
                             <BarChart data={ data } maxBarSize={ 20 } layout={ 'vertical' }>
                                 <Legend align={ 'left' } payload={legendPayload}/>
                                 <XAxis type={ 'number' } dataKey="percentage" hide />
@@ -41,7 +41,7 @@ function ArguementHot(props) {
                                 <Bar dataKey={ 'percentage' } legendType={ 'circle' } radius={ 5 } label={{position:"insideRight",  fill: 'white', fontSize: 15 }}>
                                     {data.map((entry, index) => (
                                         <Cell key={entry.name} fill={entry.fill}/>
-                                    ))}    
+                                    ))}
                                 </Bar>
                                 {/* <Bar dataKey={ '안된다' } legendType={ 'circle' } fill={ '#82ca9d' } radius={ 5 } label={{ position:"insideRight",  fill: 'white', fontSize: 15 }}/> */}
                             </BarChart>
@@ -53,7 +53,7 @@ function ArguementHot(props) {
                             </Typography>
                         </div>
                 </div>
-                <div style={{"margin-top":"20px"}}>
+                <div style={{marginTop: 20}}>
                     <CommentList/>
                 </div>
             </div>
