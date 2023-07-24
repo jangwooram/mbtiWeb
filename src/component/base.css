@@ -15,11 +15,14 @@ div {
     min-width: 1100px;
     max-width: 1140px;
     padding: 40px 20px;
+    background-color: #eef0f0;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 .container{
     padding: 40px 0;
+    justify-content: space-evenly;
 }
 
 .container-header{
@@ -33,4 +36,10 @@ div {
 
 .MuiTypography-root{
     width: fit-content;
+}
+.w_one_third{
+    width: 32%;
+}
+.w_two_third{
+    width: 64%;
 }

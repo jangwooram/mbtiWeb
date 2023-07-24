@@ -1,6 +1,6 @@
 import './App.css';
 import './component/base.css'
-import HomeHeader from "./component/Home/Header";
+import HomeHeader from "./component/Element/Header";
 import HomeContent from "./component/Home/Content";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import React, {useEffect, useState} from "react";
@@ -11,6 +11,7 @@ import ArticleDetail from "./component/ArticleDetail";
 import Footer from "./component/Footer";
 import SignIn from "./component/SignIn";
 import SignUp from "./component/SignUp";
+import AboutContent from './component/About/Content';
 
 function App() {
     const [loginPageInfo,setLoginPageInfo] = useState(false);
@@ -21,6 +22,7 @@ function App() {
             <HomeHeader loginPageInfo={loginPageInfo} setLoginInfo={setLoginPageInfo}/>
             <Routes>
                 <Route exact path='/' element={<HomeContent setLoginInfo={setLoginPageInfo}/>}/>
+                <Route exact path='/about/:mbti' element={<AboutContent setLoginInfo={setLoginPageInfo}/>}/>
                 <Route exact path='/SignIn' element={<SignIn loginInfo={loginPageInfo} setLoginPageInfo={setLoginPageInfo}/>} />
                 <Route exact path='/SignUp' element={<SignUp/>}/>
                 <Route exact path='/ArticleList/:category' element={<ArticleList/>}/>
